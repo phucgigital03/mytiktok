@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './AccountItems.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -22,5 +23,10 @@ function AccoutItems({ data, onChoose }) {
         </Link>
     );
 }
+
+AccoutItems.propTypes = {
+    data: PropTypes.object.isRequired,
+    onChoose: PropTypes.func,
+};
 
 export default AccoutItems;
