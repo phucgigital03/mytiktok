@@ -34,8 +34,8 @@ function Sidebar() {
         <aside className={cx('wrapper')}>
             <Menu>
                 <MenuItem title="For You" icon={iconMenu.Home} to={config.routes.home}></MenuItem>
-                <MenuItem title="For You" icon={iconMenu.User} to={config.routes.following}></MenuItem>
-                <MenuItem title="For You" icon={iconMenu.Live} to={config.routes.live}></MenuItem>
+                <MenuItem title="Flowwing" icon={iconMenu.User} to={config.routes.following}></MenuItem>
+                <MenuItem title="Live" icon={iconMenu.Live} to={config.routes.live}></MenuItem>
             </Menu>
         </aside>
     );
