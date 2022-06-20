@@ -118,22 +118,28 @@ function Header() {
                 <div className={cx('action')}>
                     {currentUser ? (
                         <div className={cx('wrap-btn-sign')}>
-                            <Tippy content="Upload video" placement="bottom" offset={[0, 4]} interactive>
-                                <button className={cx('btn-sign')}>
-                                    <UploadIcon />
-                                </button>
-                            </Tippy>
-                            <Tippy content="Messagae" placement="bottom" offset={[0, 4]} interactive>
-                                <button className={cx('btn-sign')}>
-                                    <MessageIcon />
-                                </button>
-                            </Tippy>
-                            <Tippy content="Inbox" placement="bottom" offset={[0, 4]} interactive>
-                                <button className={cx('btn-sign', 'active')}>
-                                    <InboxIcon />
-                                    <span className={cx('number-inbox')}>0</span>
-                                </button>
-                            </Tippy>
+                            <span>
+                                <Tippy content="Upload video" placement="bottom" offset={[0, 4]} interactive>
+                                    <button className={cx('btn-sign')}>
+                                        <UploadIcon />
+                                    </button>
+                                </Tippy>
+                            </span>
+                            <span>
+                                <Tippy content="Messagae" placement="bottom" offset={[0, 4]} interactive>
+                                    <button className={cx('btn-sign')}>
+                                        <MessageIcon />
+                                    </button>
+                                </Tippy>
+                            </span>
+                            <span>
+                                <Tippy content="Inbox" placement="bottom" offset={[0, 4]} interactive>
+                                    <button className={cx('btn-sign', 'active')}>
+                                        <InboxIcon />
+                                        <span className={cx('number-inbox')}>0</span>
+                                    </button>
+                                </Tippy>
+                            </span>
                         </div>
                     ) : (
                         <div className={cx('wrap-btn')}>

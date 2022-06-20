@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
-import classNames from 'classnames/bind';
-import styles from './SearchHeader.module.scss';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames/bind';
+import styles from './SearchHeader.module.scss';
 
 import TippyHead from '@tippyjs/react/headless';
 import { PopperWrap } from '~/component/PopperWrap';
-import { AccountItems } from '~/component/AccountItems';
 import { useDebounce } from '~/hooks';
+import SearchResult from '~/component/SearchResult';
 import * as searchServices from '~/services/SearchService';
 
 const cx = classNames.bind(styles);
@@ -16,7 +16,7 @@ let count = 1;
 function SearchHeader() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [showloading, setShowLoad] = useState(false);
     const inRef = useRef();
     const debounce = useDebounce(searchValue, 600);
@@ -62,10 +62,10 @@ function SearchHeader() {
         setShowResult(true);
     };
 
-    const handleChoose = () => {
+    const handleChoose = useCallback(() => {
         setSearchResult([]);
         setSearchValue('');
-    };
+    }, []);
 
     return (
         <TippyHead
@@ -75,9 +75,7 @@ function SearchHeader() {
                 <div className={cx('wrap-popper')} tabIndex="-1" {...attrs}>
                     <PopperWrap>
                         <h4 className={cx('search-accout')}>Accouts</h4>
-                        {searchResult.map((item) => (
-                            <AccountItems key={item.id} data={item} onChoose={handleChoose} />
-                        ))}
+                        <SearchResult searchResults={searchResult} handleChoose={handleChoose} />
                     </PopperWrap>
                 </div>
             )}
